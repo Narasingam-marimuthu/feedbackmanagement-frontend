@@ -1,0 +1,20 @@
+.placeholder-white::placeholder {
+    color: white;
+    opacity: 1; /* For Firefox */
+  }
+  
+  .placeholder-white::-webkit-input-placeholder {
+    color: white;
+  }
+  
+  .placeholder-white::-moz-placeholder {
+    color: white;
+  }
+  
+  .placeholder-white:-ms-input-placeholder {
+    color: white;
+  }
+  
+  .placeholder-white::-ms-input-placeholder {
+    color: white;
+  }
