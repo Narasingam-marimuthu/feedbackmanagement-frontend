@@ -757,9 +757,8 @@ export default function Feedback() {
                 value={module}
                 onChange={(e) => setModule(e.target.value)}
                 style={{ backgroundColor: "#455577", borderColor: "#121825" }}
-                className="text-white"
               >
-                <option>Select Module</option>
+                <option>Select The Module</option>
                 <option value="1">Channel</option>
                 <option value="2">Project</option>
                 <option value="3">Task</option>
@@ -788,12 +787,12 @@ export default function Feedback() {
               <Form.Control
                 as="textarea"
                 rows={3}
-                placeholder="Description"
+                placeholder="Add a additional details"
                 name="description"
                 className="placeholder-white"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                style={{ backgroundColor: "#455577", borderColor: "#121825" }}
+                style={{ backgroundColor: "#455577", borderColor: "#121825" ,color:"white"}}
               />
               {errors.description && (
                 <p className="text-danger">{errors.description}</p>
@@ -811,13 +810,14 @@ export default function Feedback() {
                     objectFit: "contain",
                   }}
                 />{" "}
-                Attachment
+                Attachments (optional)
               </Form.Label>
               <Form.Control
                 type="file"
                 onChange={handleFileChange}
-                className="text-white"
+                className="placeholder-white"
                 style={{ backgroundColor: "#455577", borderColor: "#121825" }}
+                placeholder="Upload Attachment"
               />
               {attachment && (
                 <div
@@ -947,7 +947,7 @@ export default function Feedback() {
                   style={{
                     backgroundColor: "#455577",
                     borderColor: "#121825",
-                    color: tag ? getTagColor(tag) : "white",
+                    color: tag ? getTagColor(tag) : "#121825",
                     width: "100%",
                     padding: "10px",
                     fontSize: "16px",
