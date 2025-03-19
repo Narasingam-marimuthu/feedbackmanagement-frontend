@@ -96,10 +96,7 @@ export default function Feedback() {
   });
 
   const handleShow = () => setShowModal(true);
-  const handleClose = () => {
-    clearForm();
-    setShowModal(false);
-  };
+  const handleClose = () => setShowModal(false);
 
   const handleDeleteShow = () => setshowDeleteModal(true);
   const handleDeleteClose = () => setshowDeleteModal(false);
@@ -162,10 +159,12 @@ export default function Feedback() {
     setDescription("");
     setAttachment(null);
     setTag("");
+    setPreviousAttachment(null);
+    setDeleteFeedbackId(null);
+    setshowDeleteModal(false);
   };
 
   console.log(platform, "platformnaras");
-  
 
   // FUnction for add and update feed back
 
@@ -219,7 +218,9 @@ export default function Feedback() {
         }
       }
       clearForm();
-      handleClose();
+      setShowModal(false);
+      setAnchorEl(null);
+      // handleClose();
     } catch (error) {
       console.error("Error adding or updating feedback:", error);
     }
@@ -249,18 +250,18 @@ export default function Feedback() {
   };
 
   // Function for delete confirmation and delete
+
   const handleDeleteConfirm = (id) => {
     handleClickClose();
     setDeleteFeedbackId(id);
     handleDeleteShow();
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     try {
-      dispatch(deleteFeedbacks(deleteFeedbackId));
+      await dispatch(deleteFeedbacks(deleteFeedbackId));
       setDeleteFeedbackId(null);
       handleDeleteClose();
-      setDeleteFeedbackId(null);
       dispatch(reset());
     } catch (error) {
       console.error("Error deleting feedback:", error);
@@ -792,7 +793,11 @@ export default function Feedback() {
                 className="placeholder-white"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                style={{ backgroundColor: "#455577", borderColor: "#121825" ,color:"white"}}
+                style={{
+                  backgroundColor: "#455577",
+                  borderColor: "#121825",
+                  color: "white",
+                }}
               />
               {errors.description && (
                 <p className="text-danger">{errors.description}</p>
